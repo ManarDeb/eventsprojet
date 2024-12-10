@@ -62,16 +62,16 @@ public class EventServicesImpl implements IEventServices{
 
     @Override
     public Logistics addAffectLog(Logistics logistics, String descriptionEvent) {
-      Event event = eventRepository.findByDescription(descriptionEvent);
-      if(event.getLogistics() == null){
-          Set<Logistics> logisticsSet = new HashSet<>();
-          logisticsSet.add(logistics);
-          event.setLogistics(logisticsSet);
-          eventRepository.save(event);
-      }
-      else{
-          event.getLogistics().add(logistics);
-      }
+        Event event = eventRepository.findByDescription(descriptionEvent);
+        if(event.getLogistics() == null){
+            Set<Logistics> logisticsSet = new HashSet<>();
+            logisticsSet.add(logistics);
+            event.setLogistics(logisticsSet);
+            eventRepository.save(event);
+        }
+        else{
+            event.getLogistics().add(logistics);
+        }
         return logisticsRepository.save(logistics);
     }
 
@@ -101,7 +101,7 @@ public class EventServicesImpl implements IEventServices{
     @Override
     public void calculCout() {
         List<Event> events = eventRepository.findByParticipants_NomAndParticipants_PrenomAndParticipants_Tache("Tounsi","Ahmed", Tache.ORGANISATEUR);
-    // eventRepository.findAll();
+        // eventRepository.findAll();
         float somme = 0f;
         for(Event event:events){
             log.info(event.getDescription());
