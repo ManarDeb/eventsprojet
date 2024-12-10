@@ -97,7 +97,7 @@ public class EventServicesImpl implements IEventServices{
         return logisticsList;
     }
 
-    @Scheduled(cron = "*/60 * * * * *")
+    @Scheduled(cron = "*/59 * * * * *")
     @Override
     public void calculCout() {
         List<Event> events = eventRepository.findByParticipants_NomAndParticipants_PrenomAndParticipants_Tache("Tounsi","Ahmed", Tache.ORGANISATEUR);
